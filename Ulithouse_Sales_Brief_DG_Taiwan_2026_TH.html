@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ulithouse — Sales Brief | DG Taiwan 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy: #1B2A5A;
+    --navy-light: #243571;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #FBF4E4;
+    --blue-pale: #E8EDF6;
+    --gray-light: #F5F6FA;
+    --gray-mid: #8892A4;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --white: #ffffff;
+    --border: #E2E8F0;
+    --success: #2D6A4F;
+    --shadow: 0 4px 24px rgba(27,42,90,0.10);
+    --shadow-sm: 0 2px 8px rgba(27,42,90,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sarabun', 'Inter', sans-serif;
+    background: #F0F4FB;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ─── SIDEBAR NAV ─────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--navy);
+    padding: 28px 0 20px;
+    z-index: 100;
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+  }
+
+  .sidebar-logo {
+    padding: 0 20px 24px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-logo .brand { font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: 1.5px; }
+  .sidebar-logo .tagline { font-size: 10px; color: var(--gold); margin-top: 2px; letter-spacing: 0.5px; }
+
+  .nav-section-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px;
+    color: rgba(201,168,76,0.7); text-transform: uppercase;
+    padding: 12px 20px 4px;
+  }
+
+  .nav-item {
+    display: block; padding: 9px 20px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none; font-size: 12.5px; font-weight: 500;
+    transition: all 0.2s; border-left: 3px solid transparent;
+    cursor: pointer;
+  }
+  .nav-item:hover, .nav-item.active {
+    color: var(--gold); background: rgba(201,168,76,0.08);
+    border-left-color: var(--gold);
+  }
+  .nav-item .num { font-size: 10px; opacity: 0.6; margin-right: 6px; }
+
+  .sidebar-footer {
+    padding: 16px 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 16px;
+  }
+  .sidebar-footer .booth-badge {
+    background: var(--gold); color: var(--navy);
+    font-size: 10px; font-weight: 700;
+    padding: 6px 10px; border-radius: 6px; text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .sidebar-footer .date { font-size: 10px; color: rgba(255,255,255,0.5); text-align: center; margin-top: 6px; }
+
+  /* ─── MAIN CONTENT ────────────────────────────────────── */
+  .main { margin-left: 220px; min-height: 100vh; }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2A3F80 100%);
+    padding: 56px 52px 44px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.2); border: 1px solid var(--gold);
+    color: var(--gold); font-size: 11px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px; letter-spacing: 1px;
+    margin-bottom: 16px; text-transform: uppercase;
+  }
+  .hero h1 { font-size: 36px; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.65); margin-top: 8px; }
+  .hero-meta { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; }
+  .hero-meta-item .label { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; display: block; }
+  .hero-meta-item .val { font-size: 13px; color: var(--white); font-weight: 600; display: block; }
+  .hero-dot { width: 1px; height: 36px; background: rgba(255,255,255,0.2); }
+
+  /* ─── SECTIONS ────────────────────────────────────────── */
+  section { padding: 44px 52px; border-bottom: 1px solid var(--border); background: var(--white); }
+  section:nth-child(even) { background: var(--gray-light); }
+
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+  }
+  .section-title { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .section-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 28px; }
+
+  /* ─── CARDS ───────────────────────────────────────────── */
+  .card-grid { display: grid; gap: 16px; }
+  .card-grid-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .card {
+    background: var(--white); border-radius: 12px;
+    padding: 24px; box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .card.navy { background: var(--navy); border-color: var(--navy); }
+  .card.gold-pale { background: var(--gold-pale); border-color: rgba(201,168,76,0.3); }
+  .card.blue-pale { background: var(--blue-pale); border-color: rgba(27,42,90,0.15); }
+
+  .card-icon { font-size: 28px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .card.navy .card-title { color: var(--gold); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .card.navy .card-text { color: rgba(255,255,255,0.75); }
+
+  /* ─── INFO ROWS ───────────────────────────────────────── */
+  .info-row {
+    display: flex; align-items: flex-start; gap: 0;
+    border-radius: 8px; overflow: hidden; margin-bottom: 8px;
+    box-shadow: var(--shadow-sm);
+  }
+  .info-row .key {
+    background: var(--navy); color: var(--white);
+    font-size: 12px; font-weight: 600; min-width: 180px;
+    padding: 11px 16px; flex-shrink: 0;
+  }
+  .info-row .val {
+    background: var(--white); color: var(--text);
+    font-size: 13px; padding: 11px 16px; flex: 1;
+    border: 1px solid var(--border); border-left: none;
+  }
+
+  /* ─── TABLES ──────────────────────────────────────────── */
+  .tbl-wrap { overflow-x: auto; border-radius: 10px; box-shadow: var(--shadow-sm); margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; background: var(--white); }
+  thead th {
+    background: var(--navy); color: var(--white);
+    font-size: 12px; font-weight: 600; padding: 11px 14px;
+    text-align: left; white-space: nowrap; letter-spacing: 0.3px;
+  }
+  tbody tr:nth-child(even) { background: #F7F9FC; }
+  tbody tr:hover { background: var(--blue-pale); }
+  td { font-size: 13px; padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); }
+  td.gold { color: var(--gold); font-weight: 600; }
+  td.strong { font-weight: 700; color: var(--navy); }
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px; letter-spacing: 0.5px;
+  }
+  .tag.rec { background: rgba(201,168,76,0.15); color: #9A7020; border: 1px solid rgba(201,168,76,0.4); }
+  .tag.sold { background: rgba(45,106,79,0.12); color: var(--success); border: 1px solid rgba(45,106,79,0.3); }
+  .tag.new { background: rgba(27,42,90,0.1); color: var(--navy); border: 1px solid rgba(27,42,90,0.2); }
+
+  /* ─── PACKAGE TABS ────────────────────────────────────── */
+  .pkg-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .pkg-tab {
+    padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: 2px solid var(--border);
+    background: var(--white); color: var(--text-mid);
+    transition: all 0.2s;
+  }
+  .pkg-tab:hover { border-color: var(--navy); color: var(--navy); }
+  .pkg-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  .pkg-panel { display: none; }
+  .pkg-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* ─── HIGHLIGHT BOX ───────────────────────────────────── */
+  .highlight {
+    border-left: 4px solid var(--gold);
+    background: var(--gold-pale); padding: 14px 18px;
+    border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13px;
+  }
+  .highlight strong { color: var(--navy); }
+
+  .alert-box {
+    border-left: 4px solid #E53E3E;
+    background: #FFF5F5; padding: 14px 18px;
+    border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13px; color: #742A2A;
+  }
+
+  /* ─── SCRIPT BOX ──────────────────────────────────────── */
+  .script-box {
+    background: var(--navy); border-radius: 10px;
+    padding: 20px 24px; margin: 14px 0;
+    border-left: 4px solid var(--gold);
+  }
+  .script-box .script-lang { font-size: 10px; color: var(--gold); font-weight: 700; letter-spacing: 1.5px; margin-bottom: 6px; text-transform: uppercase; }
+  .script-box .script-text { font-size: 13.5px; color: rgba(255,255,255,0.9); line-height: 1.7; font-style: italic; }
+
+  /* ─── Q&A ACCORDION ──────────────────────────────────── */
+  .qa-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+  .qa-q {
+    padding: 13px 18px; font-size: 13.5px; font-weight: 600; color: var(--navy);
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    background: var(--white); transition: background 0.2s;
+    user-select: none;
+  }
+  .qa-q:hover { background: var(--blue-pale); }
+  .qa-q .arrow { color: var(--gold); font-size: 18px; transition: transform 0.2s; flex-shrink: 0; }
+  .qa-q.open .arrow { transform: rotate(180deg); }
+  .qa-a { display: none; padding: 14px 18px; background: #FAFBFF; font-size: 13px; color: var(--text-mid); border-top: 1px solid var(--border); line-height: 1.7; }
+  .qa-a.open { display: block; animation: fadeIn 0.25s ease; }
+  .qa-a .zh { color: var(--navy); font-weight: 500; margin-top: 8px; padding: 8px 12px; background: rgba(27,42,90,0.06); border-radius: 6px; }
+
+  /* ─── KPI BOXES ───────────────────────────────────────── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  .kpi-box { background: var(--navy); border-radius: 10px; padding: 20px 16px; text-align: center; }
+  .kpi-box .kpi-num { font-size: 30px; font-weight: 700; color: var(--gold); }
+  .kpi-box .kpi-label { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  /* ─── CHECKLIST ───────────────────────────────────────── */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '☐'; font-size: 16px; color: var(--gold);
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ─── CTA BUTTONS ─────────────────────────────────────── */
+  .btn { display: inline-block; padding: 11px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; }
+  .btn-navy { background: var(--navy); color: var(--white); }
+  .btn-navy:hover { background: var(--navy-light); box-shadow: var(--shadow); }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* ─── PROGRESS/TIMELINE ───────────────────────────────── */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-dot { position:absolute; left:-24px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--gold); border:2px solid var(--white); box-shadow:0 0 0 2px var(--gold); }
+  .tl-date { font-size:10px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
+  .tl-title { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:2px; }
+  .tl-text { font-size:13px; color:var(--text-mid); }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  .footer {
+    background: var(--navy); padding: 32px 52px;
+    color: rgba(255,255,255,0.7); font-size: 12.5px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+  }
+  .footer .footer-brand { font-size: 18px; font-weight: 700; color: var(--white); }
+  .footer .footer-tagline { font-size: 11px; color: var(--gold); margin-top: 2px; }
+  .footer-contacts { display: flex; flex-direction: column; gap: 4px; }
+  .footer-contacts a { color: var(--gold); text-decoration: none; font-size: 12px; }
+
+  /* ─── DIVIDER ─────────────────────────────────────────── */
+  .divider { height: 3px; background: linear-gradient(90deg, var(--gold) 0%, transparent 100%); border-radius: 2px; margin: 20px 0; }
+  .h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin: 20px 0 10px; }
+  .h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin: 14px 0 6px; }
+  ul.dot-list { list-style: none; padding: 0; }
+  ul.dot-list li { padding: 4px 0 4px 18px; position: relative; font-size: 13px; color: var(--text-mid); }
+  ul.dot-list li::before { content: '•'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .star-note { font-size: 12px; color: var(--text-mid); padding: 3px 0; }
+  .star-note::before { content: '★ '; color: var(--gold); }
+
+  /* Responsive */
+  @media(max-width: 900px){
+    .sidebar{ display: none; }
+    .main{ margin-left: 0; }
+    section{ padding: 32px 24px; }
+    .hero{ padding: 36px 24px 28px; }
+    .card-grid-3{ grid-template-columns: 1fr 1fr; }
+    .kpi-grid{ grid-template-columns: 1fr 1fr; }
+    .two-col{ grid-template-columns: 1fr; }
+    .hero h1{ font-size: 26px; }
+    .footer{ flex-direction: column; gap: 16px; padding: 28px 24px; }
+  }
+  @media(max-width: 600px){
+    .card-grid-2,.card-grid-3{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ────────────────────────────────────────────────── -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="brand">ULITHOUSE</div>
+    <div class="tagline">Beyond Words, Into Hearts.</div>
+  </div>
+
+  <div class="nav-section-label">คู่มือทีมขาย</div>
+  <a class="nav-item active" onclick="scrollTo('hero')"><span class="num">00</span>ภาพรวม</a>
+  <a class="nav-item" onclick="scrollTo('s1')"><span class="num">01</span>แบรนด์ & ศิลปิน</a>
+  <a class="nav-item" onclick="scrollTo('s2')"><span class="num">02</span>แพ็คเกจ 3 ประเภท</a>
+  <a class="nav-item" onclick="scrollTo('s3')"><span class="num">03</span>งาน DG Taiwan 2026</a>
+  <a class="nav-item" onclick="scrollTo('s4')"><span class="num">04</span>ตลาดไต้หวัน</a>
+  <a class="nav-item" onclick="scrollTo('s5')"><span class="num">05</span>Script & Q&A</a>
+  <a class="nav-item" onclick="scrollTo('s6')"><span class="num">06</span>เป้าหมาย & Checklist</a>
+
+  <div class="sidebar-footer">
+    <div class="booth-badge">BOOTH A0436 · IP HUB</div>
+    <div class="date">16–19 เม.ย. 2569 · TWTC Hall 1</div>
+  </div>
+</nav>
+
+<!-- ─── MAIN ───────────────────────────────────────────────────── -->
+<div class="main">
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-badge">เอกสารสำหรับทีมขาย — ลับเฉพาะภายใน</div>
+  <h1>ULITHOUSE<br><span>Sales Brief</span></h1>
+  <div class="hero-sub">คู่มือฉบับสมบูรณ์สำหรับคุณลัดดา | DG Taiwan 2026</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="label">วันที่</span>
+      <span class="val">16–19 เมษายน 2569</span>
+    </div>
+    <div class="hero-dot"></div>
+    <div class="hero-meta-item">
+      <span class="label">สถานที่</span>
+      <span class="val">TWTC Hall 1, ไทเป</span>
+    </div>
+    <div class="hero-dot"></div>
+    <div class="hero-meta-item">
+      <span class="label">บูธ</span>
+      <span class="val">A0436 · Int'l IP Hub</span>
+    </div>
+    <div class="hero-dot"></div>
+    <div class="hero-meta-item">
+      <span class="label">ผู้ติดตาม</span>
+      <span class="val">1.7 ล้านคนทั่วโลก</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── S1: แบรนด์ ─────────────────────────────────────────────── -->
+<section id="s1">
+  <div class="section-label">ส่วนที่ 01</div>
+  <div class="section-title">Ulithouse & Tum Ulit คือใคร?</div>
+  <div class="section-sub">ก่อนออกบูธ — ทำความเข้าใจแบรนด์ให้ชัดก่อนตอบคำถามลูกค้า</div>
+
+  <div class="script-box" style="margin-bottom:24px;">
+    <div class="script-lang">ประโยคสรุปที่ใช้ได้เลย (EN)</div>
+    <div class="script-text">"Ulithouse is a Thai character IP studio. Our characters don't speak — they make people feel something real. That's why they work across cultures without translation."</div>
+  </div>
+
+  <div class="card-grid card-grid-2" style="margin-bottom:24px;">
+    <div class="info-row"><div class="key">ชื่อแบรนด์</div><div class="val">Ulithouse — Thai Character IP Studio</div></div>
+    <div class="info-row"><div class="key">ศิลปิน</div><div class="val">Tum Ulit (ณฐกร อุลิตร) — Illustrator & Wordless Storyteller</div></div>
+    <div class="info-row"><div class="key">USP หลัก</div><div class="val">"The Art of Saying Nothing" — อารมณ์ที่ข้ามพรมแดนภาษาและวัฒนธรรม</div></div>
+    <div class="info-row"><div class="key">ผู้ติดตาม</div><div class="val">1.7 ล้านคน (Instagram, Facebook, TikTok)</div></div>
+    <div class="info-row"><div class="key">IP หลัก</div><div class="val">Pandao, MoodyBear, Door & Window, Bubble Girl, Lion</div></div>
+    <div class="info-row"><div class="key">สไตล์งาน</div><div class="val">Flat vector, minimalist line art — อารมณ์ Bittersweet</div></div>
+    <div class="info-row"><div class="key">ตำแหน่งตลาด</div><div class="val">Premium Emotional Art — Contemporary Character IP</div></div>
+    <div class="info-row"><div class="key">Benchmarking</div><div class="val">Mamuang (TH emotional), Takashi Murakami (IP commercialization)</div></div>
+  </div>
+
+  <div class="h3">ผลงานและ Track Record ที่อ้างอิงได้</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>ผลงาน / Partnership</th><th>รายละเอียด</th><th>ผลลัพธ์</th></tr></thead>
+      <tbody>
+        <tr><td class="strong">Solo Exhibition</td><td>"Who's Cutting Onions?" ปี 2567 · River City Bangkok</td><td>ขาย 26/30 ภาพ + 21/30 ประติมากรรม · รายได้ ~฿6M+</td></tr>
+        <tr><td class="strong">B2B Custom IP</td><td>SC Asset — "Let Your Flaw Bloom" (Hydrangea & Opuntia)</td><td>Custom character สำหรับ Residential Development (metrics NDA)</td></tr>
+        <tr><td class="strong">Corporate Partner</td><td>AVANI+ Hotels, TBWA, Lineman, Mansome</td><td>Multi-channel B2B collabs</td></tr>
+        <tr><td class="strong">Taiwan Collab</td><td>Taiwan Excellence — FuBear comic series</td><td>Deploy ใน 11 ประเทศ · ทำให้มีชื่อในตลาดไต้หวันแล้ว</td></tr>
+        <tr><td class="strong">Art Toy Record</td><td>Pandao Resin Edition — 25 ชิ้น</td><td class="gold">$540/ชิ้น · Sold Out 100%</td></tr>
+        <tr><td class="strong">Art Print Record</td><td>Medium 50×50 cm · Edition 100 ชิ้น</td><td class="gold">$149/ชิ้น · Sold Out แล้ว</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="h3">5 คาแรคเตอร์ — รู้จักไว้เพื่อแนะนำลูกค้า</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>ตัวละคร</th><th>อารมณ์หลัก</th><th>เหมาะกับธุรกิจประเภทใด</th></tr></thead>
+      <tbody>
+        <tr><td class="strong">🐼 Pandao</td><td>ความอ่อนโยน, เป็นเพื่อน, Bittersweet</td><td>Lifestyle, Hospitality, Stationery, Home Décor, F&B</td></tr>
+        <tr><td class="strong">🐻 MoodyBear</td><td>ความเปราะบาง, อบอุ่น, Safe Space</td><td>Art Toys, Wellness Brand, Emotional UX, Sticker</td></tr>
+        <tr><td class="strong">🚪 Door & Window</td><td>มรดกสถาปัตย์, จินตนาการ, การค้นพบ</td><td>Interior Design, Hospitality, Premium Retail</td></tr>
+        <tr><td class="strong">🫧 Bubble Girl</td><td>ความบริสุทธิ์, ฝัน, เปราะบางที่สวยงาม</td><td>Art Toys, Gallery, Fashion Collab, Limited Edition</td></tr>
+        <tr><td class="strong">🦁 Lion</td><td>IP ใหม่ 2026 — รอดูทิศทาง</td><td class="gold">⚠ ปรึกษา Patr ก่อนนำเสนอเสมอ</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─── S2: แพ็คเกจ ─────────────────────────────────────────────── -->
+<section id="s2" style="background:var(--gray-light);">
+  <div class="section-label">ส่วนที่ 02</div>
+  <div class="section-title">3 แพ็คเกจที่เราเสนอขาย</div>
+  <div class="section-sub">ฟังลูกค้าก่อน — แล้วเสนอแพ็คเกจที่ตรง Pain Point ของเขา</div>
+
+  <div class="pkg-tabs">
+    <button class="pkg-tab active" onclick="showPkg('p1',this)">📄 Package 1 — IP Licensing</button>
+    <button class="pkg-tab" onclick="showPkg('p2',this)">🖼 Package 2 — Art Print Distribution</button>
+    <button class="pkg-tab" onclick="showPkg('p3',this)">🧸 Package 3 — Art Toy JV</button>
+  </div>
+
+  <!-- PKG 1 -->
+  <div class="pkg-panel active" id="p1">
+    <div class="card blue-pale" style="margin-bottom:16px;">
+      <div class="card-title" style="font-size:16px;">📄 IP Licensing — ลิขสิทธิ์คาแรคเตอร์</div>
+      <div class="card-text">สำหรับแบรนด์ที่ต้องการนำคาแรคเตอร์ Ulithouse ไปใช้ผลิตสินค้า แคมเปญ หรือ Branded Space</div>
+    </div>
+
+    <div class="h3">กลุ่มลูกค้าเป้าหมาย</div>
+    <ul class="dot-list">
+      <li>แบรนด์ Stationery, Home Décor, Lifestyle มองหา IP สำหรับ Collection ใหม่</li>
+      <li>Hotel / Café ต้องการ Themed Experience หรือ Branded Space</li>
+      <li>แบรนด์ต้องการ Custom Character สร้างใหม่เพื่อแบรนด์ตัวเอง</li>
+      <li>Agency / Brand Manager ทำแคมเปญให้ลูกค้า</li>
+    </ul>
+
+    <div class="h3">3 โมเดลการ License</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>โมเดล</th><th>วิธีทำงาน</th><th>เหมาะกับใคร</th></tr></thead>
+        <tbody>
+          <tr><td>Flat Fee Only</td><td>จ่ายครั้งเดียว · กำหนดขอบเขตการใช้งาน</td><td>แคมเปญสั้น, Pop-up, สินค้าชิ้นเดียว</td></tr>
+          <tr><td>Royalty Only</td><td>ไม่มีค่าธรรมเนียมล่วงหน้า · จ่าย % จากยอดขาย</td><td>พาร์ทเนอร์ที่มีความสัมพันธ์ยาวนาน</td></tr>
+          <tr><td class="gold"><span class="tag rec">★ แนะนำ</span> Hybrid</td><td>Flat Fee ล่วงหน้า + Royalty รายไตรมาส</td><td>B2B ระยะยาว — แนะนำสำหรับดีลส่วนใหญ่</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="h3">ตารางราคา — Existing Character IP</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>ระดับดีล</th><th>Flat Fee (USD)</th><th>Flat Fee (THB)</th><th>Royalty Rate</th><th>ระยะเวลา</th></tr></thead>
+        <tbody>
+          <tr><td>สินค้าชิ้นเดียว / แคมเปญสั้น</td><td class="gold">$3,000–$8,000</td><td>฿105K–฿280K</td><td>5–7% of wholesale</td><td>3–6 เดือน</td></tr>
+          <tr><td>1 หมวดสินค้า / 1 ประเทศ</td><td class="gold">$5,000–$15,000</td><td>฿175K–฿525K</td><td>7–10% of wholesale</td><td>1 ปี (ต่ออายุได้)</td></tr>
+          <tr><td>Hospitality / Branded Space</td><td class="gold">$8,000–$25,000/สาขา</td><td>฿280K–฿875K</td><td>5–8% rev. share</td><td>1 ปี/สาขา</td></tr>
+          <tr><td>Collection (หลายหมวดสินค้า)</td><td class="gold">$10,000–$25,000</td><td>฿350K–฿875K</td><td>8–10% of wholesale</td><td>1–2 ปี</td></tr>
+          <tr><td>Exclusive Territory</td><td class="gold">$25,000–$60,000 MG</td><td>฿875K–฿2.1M</td><td>8–12% of wholesale</td><td>2–3 ปี</td></tr>
+          <tr><td>Digital / App / Sticker</td><td class="gold">$3,000–$15,000</td><td>฿105K–฿525K</td><td>3–8% of net revenue</td><td>1 ปี (ต่ออายุได้)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="h3">ตารางราคา — Custom Character Design</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>แพ็คเกจ</th><th>ราคา (USD)</th><th>ราคา (THB)</th><th>สิ่งที่ได้รับ</th></tr></thead>
+        <tbody>
+          <tr><td>1 ตัวละคร</td><td class="gold">$5,000–$12,000</td><td>฿175K–฿420K</td><td>Character Sheet + 3 ท่า + Style Guide (4–6 สัปดาห์)</td></tr>
+          <tr><td>2 ตัวละคร / คู่</td><td class="gold">$8,000–$20,000</td><td>฿280K–฿700K</td><td>2 Character Sheets + Relationship Concept (6–8 สัปดาห์)</td></tr>
+          <tr><td class="strong"><span class="tag rec">★ แนะนำ</span> Full Brand System</td><td class="gold">$15,000–$40,000</td><td>฿525K–฿1.4M</td><td>2–4 ตัว + Concept Bible + Application Mockup (8–12 สัปดาห์)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight">
+      <strong>Exclusivity Premium:</strong> Category Exclusive → บวก <strong>+25%</strong> | Territory Exclusive → บวก <strong>+40%</strong><br>
+      <strong>Marketing Value ที่รวมอยู่ในดีล:</strong> Standard Deal → Story 2× (~$2K) | Exclusive Deal → Main Feed post ต่อ 1.7M followers (~$15K+)<br>
+      <strong>QC SLA:</strong> ตอบ revision ภายใน 5 วันทำการ | Delivery ตาม milestone ในสัญญา
+    </div>
+  </div>
+
+  <!-- PKG 2 -->
+  <div class="pkg-panel" id="p2">
+    <div class="card blue-pale" style="margin-bottom:16px;">
+      <div class="card-title" style="font-size:16px;">🖼 Art Print Distribution — กระจาย Art Print</div>
+      <div class="card-text">สำหรับ Gallery, Interior Design Firm, ร้านค้า Lifestyle ที่ต้องการนำ Art Print ของ Tum Ulit ไปจำหน่าย</div>
+    </div>
+
+    <div class="h3">กลุ่มลูกค้าเป้าหมาย</div>
+    <ul class="dot-list">
+      <li>Gallery หรือ Museum Shop มองหางาน Art Print คุณภาพสูง</li>
+      <li>บริษัท Interior Design จัดหาของตกแต่งให้โปรเจกต์</li>
+      <li>ร้านค้า Lifestyle / Concept Store สายแนว Emotional Art</li>
+      <li>ตัวแทนจำหน่ายในไต้หวันหรือเอเชียที่มีช่องทางขายอยู่แล้ว</li>
+    </ul>
+
+    <div class="h3">Art Print Collection — ราคาและขนาด</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>ขนาด</th><th>จำนวน Edition</th><th>ราคาขาย (USD)</th><th>ราคาขายส่ง (USD)</th><th>สถานะ</th></tr></thead>
+        <tbody>
+          <tr><td>Standard 45×45 cm</td><td>100 ชิ้น</td><td>$120 (฿4,200)</td><td class="gold">$60 (฿2,100)</td><td><span class="tag new">กำลังผลิต</span></td></tr>
+          <tr><td>Medium 50×50 cm</td><td>50–100 ชิ้น</td><td>$149 (฿5,200)</td><td class="gold">$75 (฿2,625)</td><td><span class="tag sold">★ SOLD OUT</span></td></tr>
+          <tr><td>Large 64×80 cm</td><td>30–50 ชิ้น</td><td>$186 (฿6,500)</td><td class="gold">$93 (฿3,255)</td><td><span class="tag new">กำลังผลิต</span></td></tr>
+          <tr><td>XL 80×100 cm</td><td>20–30 ชิ้น</td><td>$280–$400</td><td class="gold">$140–$200</td><td><span class="tag new">สั่งพิเศษ</span></td></tr>
+          <tr><td>Hand-Embellished 50×50+</td><td>10–20 ชิ้น</td><td>$400–$800</td><td class="gold">Consignment only</td><td><span class="tag rec">Tum วาดเพิ่มด้วยมือ</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="h3">3 โมเดล Partnership</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>โมเดล</th><th>เงื่อนไขหลัก</th><th>Margin ที่ได้</th><th>เหมาะกับใคร</th></tr></thead>
+        <tbody>
+          <tr><td>A: Consignment</td><td>ไม่จ่ายล่วงหน้า · แบ่งรายได้ 65/35</td><td>35% of retail</td><td>Gallery, Museum Shop ยังไม่แน่ใจยอดขาย</td></tr>
+          <tr><td>B: Wholesale</td><td>ซื้อขาด 50% of Retail · MOQ 20 ชิ้น</td><td>50% gross margin</td><td>ร้านค้าที่มีช่องทางขายชัดเจน, Interior Firm</td></tr>
+          <tr><td class="gold"><span class="tag rec">★ แนะนำ</span> C: Hybrid</td><td>Wholesale 15–20 ชิ้นแรก + Consignment 50/50</td><td>50% → 50% blended</td><td>พาร์ทเนอร์ต้องการสิทธิพิเศษ + Priority Access</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight">
+      <strong>ราคาขายส่ง = 50% of Retail เสมอ</strong> (Keystone Margin)<br>
+      <strong>Volume Discount:</strong> 50–99 ชิ้น → ลด 5% | 100+ ชิ้น → ลด 10% จากราคาขายส่ง<br>
+      <strong>International Freight Allowance:</strong> สั่งเกิน $2,000 → ลดเพิ่ม 5% เพื่อชดเชยค่าขนส่ง<br>
+      <strong>Exclusive Territory:</strong> ต้องซื้อ 50+ ชิ้น/ไตรมาส หรือ $5,000/ไตรมาส
+    </div>
+
+    <div class="h3">ตัวอย่าง Deal Economics — Wholesale Partner</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>รายการ</th><th>ตัวเลข</th></tr></thead>
+        <tbody>
+          <tr><td>สั่งซื้อ Standard 45×45 จำนวน 20 ชิ้น (MOQ)</td><td>20 × $60 = <strong>$1,200</strong></td></tr>
+          <tr><td>ขายปลีก @ $120/ชิ้น</td><td>20 × $120 = <strong>$2,400 revenue</strong></td></tr>
+          <tr><td>Gross Profit ของ Partner</td><td class="gold">$1,200 (50% margin)</td></tr>
+          <tr><td>Volume Discount ถ้าสั่ง 50 ชิ้น (−5%)</td><td>ราคาขายส่งลดเหลือ $57/ชิ้น</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PKG 3 -->
+  <div class="pkg-panel" id="p3">
+    <div class="card blue-pale" style="margin-bottom:16px;">
+      <div class="card-title" style="font-size:16px;">🧸 Art Toy Joint Venture — ร่วมผลิต Art Toy</div>
+      <div class="card-text">สำหรับผู้ผลิตของเล่นและนักสะสมที่ต้องการนำ IP ไปผลิตเป็น Collectible Art Toy</div>
+    </div>
+
+    <div class="h3">กลุ่มลูกค้าเป้าหมาย</div>
+    <ul class="dot-list">
+      <li>บริษัทผลิต Art Toy เช่น ToyZero Plus, Unbox Industries, boutique resin studio</li>
+      <li>แบรนด์ของเล่นที่มีโรงงาน Vinyl ต้องการ IP ดัง</li>
+      <li>Gallery ต้องการของสะสม Limited Edition ราคาพรีเมียม</li>
+    </ul>
+
+    <div class="h3">เปรียบเทียบ 2 โมเดล JV</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>รายการ</th><th>A: Limited Edition (Resin)</th><th>B: Open Edition (Vinyl)</th></tr></thead>
+        <tbody>
+          <tr><td>จำนวน Edition</td><td>25–100 ชิ้น</td><td>500–3,000+ ชิ้น</td></tr>
+          <tr><td>วัสดุ</td><td>เรซิน (ทาสีมือ) หรือ Sofubi</td><td>Vinyl (PVC) — โรงงาน</td></tr>
+          <tr><td>รายได้ Ulithouse</td><td class="gold">Net Profit 55% (Ulithouse) / 45% (Partner)</td><td class="gold">Royalty 8–12% of wholesale</td></tr>
+          <tr><td>ราคาขาย</td><td>$80–$540+ / ชิ้น</td><td>$12–$60 (Blind Box) / $30–$120 (Single)</td></tr>
+          <tr><td>Advance ให้ Ulithouse</td><td>$1,000–$5,000 (non-refundable)</td><td>$5,000–$15,000 (non-refundable)</td></tr>
+          <tr><td>Minimum Guarantee</td><td>N/A</td><td>$8,000–$25,000/ปี (Exclusive)</td></tr>
+          <tr><td>ต้นทุนผลิต</td><td>Partner จ่ายก่อน · คืนก่อน Split Profit</td><td>Partner รับผิดชอบ 100%</td></tr>
+          <tr><td>ระยะสัญญา</td><td>Per Project (6–12 เดือน)</td><td>18–36 เดือน</td></tr>
+          <tr><td>เหมาะกับ</td><td>Boutique Studio, Art Toy Gallery</td><td>บริษัทของเล่นมีโรงงาน, Mass Market</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="h3">ต้นทุนประมาณการ — Resin Limited Edition</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>รายการต้นทุน</th><th>25 ชิ้น</th><th>50 ชิ้น</th><th>100 ชิ้น</th></tr></thead>
+        <tbody>
+          <tr><td>3D Sculpt / Digital Modeling</td><td>$800–$2,000</td><td>$800–$2,000</td><td>$800–$2,000</td></tr>
+          <tr><td>Mold Making</td><td>$500–$1,500</td><td>$500–$1,500</td><td>$500–$1,500</td></tr>
+          <tr><td>Casting + Hand-Painting (ต่อชิ้น)</td><td>$40–$75</td><td>$30–$55</td><td>$18–$45</td></tr>
+          <tr><td>Packaging (ต่อชิ้น)</td><td>$8–$15</td><td>$6–$12</td><td>$5–$10</td></tr>
+          <tr><td class="strong">รวมต้นทุนโปรเจกต์ ★</td><td class="gold">$2,575–$5,875</td><td class="gold">$3,250–$7,100</td><td class="gold">$3,900–$9,500</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight">
+      <strong>Case Study — Pandao Resin 25 ชิ้น:</strong> ราคา $540/ชิ้น · Revenue $13,500 · Net Profit ~$8,000<br>
+      → Ulithouse รับ $4,400 (55%) | Partner รับ $3,600 (45%) = ROI ~61%<br>
+      <strong>IP Ownership:</strong> IP ทุกชิ้นเป็นของ Ulithouse 100% เสมอ — Partner ได้ License ใช้งาน ไม่ใช่ความเป็นเจ้าของ
+    </div>
+
+    <div class="h3">5 ขั้นตอน Approval Workflow</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>กิจกรรม</th><th>ผู้รับผิดชอบ</th><th>Timeline</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Concept Brief & Character Selection</td><td>Partner + Ulithouse</td><td>สัปดาห์ 1–2</td></tr>
+          <tr><td>2</td><td>3D Design / Sculpt Approval</td><td>Tum Ulit Review</td><td>สัปดาห์ 3–6</td></tr>
+          <tr><td>3</td><td>Sample Production & QC</td><td>Partner (Factory)</td><td>สัปดาห์ 7–10</td></tr>
+          <tr><td>4</td><td>Final Sample Approval</td><td>Ulithouse Sign-off</td><td>สัปดาห์ 11</td></tr>
+          <tr><td>5</td><td>Launch & Marketing Coordination</td><td>ร่วมกัน</td><td>สัปดาห์ 12–14</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── S3: DG Taiwan ────────────────────────────────────────────── -->
+<section id="s3">
+  <div class="section-label">ส่วนที่ 03</div>
+  <div class="section-title">งาน DG Taiwan 2026 — ข้อมูลที่ต้องรู้</div>
+  <div class="section-sub">Designed Giftionery Taiwan — งานแสดงสินค้า Design & IP Licensing ปีที่ 48 ของไต้หวัน</div>
+
+  <div class="two-col" style="margin-bottom:24px;">
+    <div>
+      <div class="info-row"><div class="key">ชื่อเต็ม</div><div class="val">DG Taiwan 2026 — Designed Giftionery Taiwan (ปีที่ 48)</div></div>
+      <div class="info-row"><div class="key">วันและเวลา</div><div class="val">16–19 เม.ย. 2569 · 09:30–17:30 น. ทุกวัน</div></div>
+      <div class="info-row"><div class="key">สถานที่</div><div class="val">TWTC Hall 1 · No.5, Sec.5, Xinyi Rd, Taipei</div></div>
+      <div class="info-row"><div class="key">บูธของเรา</div><div class="val">A0436 · Zone: Int'l IP Hub</div></div>
+      <div class="info-row"><div class="key">ผู้จัด</div><div class="val">TWTC + TAITRA (Taiwan External Trade Dev. Council)</div></div>
+      <div class="info-row"><div class="key">Show Manager</div><div class="val">Ms. Belinda Chen · giftionery@taitra.org.tw</div></div>
+    </div>
+    <div>
+      <div class="info-row"><div class="key">ธีม 2026</div><div class="val">"Design Leads, Smart Speaks"</div></div>
+      <div class="info-row"><div class="key">ขนาดงาน (2025)</div><div class="val">299 exhibitors · 5,612 ผู้ซื้อต่างชาติ · 41 ประเทศ</div></div>
+      <div class="info-row"><div class="key">เพื่อนบ้านบูธ</div><div class="val">Mamuang, NINIWANTED, Mr.Donothing, i am mark, BOUNCE</div></div>
+      <div class="info-row"><div class="key">ทีมในงาน</div><div class="val">คุณ Patr (MD) + คุณ Ladda · ตลอด 4 วัน</div></div>
+      <div class="info-row"><div class="key">ทีม Remote (TH)</div><div class="val">Tum Ulit (Creative Approval) + Bam (Social Media)</div></div>
+      <div class="info-row"><div class="key">เป้าหมายหลัก</div><div class="val">B2B Licensing &amp; Distribution — ไม่ใช่ B2C</div></div>
+    </div>
+  </div>
+
+  <div class="h3">ตารางเวลาสำคัญ</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-date">14–15 เม.ย.</div>
+      <div class="tl-title">Move-in & ตกแต่งบูธ</div>
+      <div class="tl-text">07:00–17:00 น. · ต้องเสร็จก่อน 17:00 น. วันที่ 15 · <strong style="color:#E53E3E;">ค่าปรับล่วงเวลา NT$71,820/ชั่วโมง/บริษัท</strong></div>
+    </div>
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-date">16 เม.ย. (พฤหัส)</div>
+      <div class="tl-title">วันเปิดงาน</div>
+      <div class="tl-text">09:30–17:30 น. · Exhibitor เข้าได้ตั้งแต่ 08:30 น.</div>
+    </div>
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-date">17 เม.ย. (ศุกร์) — สำคัญที่สุด!</div>
+      <div class="tl-title">Procurement Matchmaking Day</div>
+      <div class="tl-text">การนัดหมาย 1-on-1 กับ International Buyers ที่คัดกรองแล้ว · ปี 2025 มี 100+ sessions · <strong>ลงทะเบียนล่วงหน้าผ่าน dgtaiwan.com</strong></div>
+    </div>
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-date">18–19 เม.ย.</div>
+      <div class="tl-title">วันงานปกติ + Weekend visitors</div>
+      <div class="tl-text">09:30–17:30 น. · DG PICK Awards voting · วันเสาร์ผู้ชมเพิ่มขึ้นมาก</div>
+    </div>
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-date">19 เม.ย. หลัง 17:30</div>
+      <div class="tl-title">Move-out (ของชิ้นเล็ก)</div>
+      <div class="tl-text">17:30–19:30 น. · 20 เม.ย. รถบรรทุกเข้า 06:00–23:00 น.</div>
+    </div>
+  </div>
+
+  <div class="h3" style="margin-top:24px;">กฎสำคัญที่ต้องจำ</div>
+  <div class="card-grid card-grid-2" style="margin-bottom:16px;">
+    <div class="alert-box">⚠ <strong>ห้าม</strong>ทิ้งบูธว่างระหว่างงาน — ต้องมีคนดูแลตลอดเวลา</div>
+    <div class="alert-box">⚠ Badge ส่งมาที่โรงแรม — รับตอน Check-in (ไม่ต้องรับที่งาน)</div>
+    <div class="highlight">✓ ทักษะภาษาจีนของคุณลัดดา = ข้อได้เปรียบสำคัญมาก ไต้หวันพูดจีนกลาง</div>
+    <div class="highlight">✓ เป้าหมาย = ได้นัด Follow-up หลังงาน ไม่ใช่ปิดดีลทันที</div>
+  </div>
+</section>
+
+<!-- ─── S4: ตลาดไต้หวัน ─────────────────────────────────────────── -->
+<section id="s4" style="background:var(--gray-light);">
+  <div class="section-label">ส่วนที่ 04</div>
+  <div class="section-title">ตลาด Character IP ของไต้หวัน</div>
+  <div class="section-sub">ทำไมไต้หวันถึงเป็นตลาดที่ใช่สำหรับ Ulithouse</div>
+
+  <div class="kpi-grid" style="margin-bottom:28px;">
+    <div class="kpi-box"><div class="kpi-num">อันดับ 4</div><div class="kpi-label">ไทยติดอันดับ 4 ประเทศผู้ซื้อสูงสุดในงาน DG Taiwan 2025</div></div>
+    <div class="kpi-box"><div class="kpi-num">41</div><div class="kpi-label">ประเทศที่ส่ง Trade Buyers เข้างาน DG Taiwan 2025</div></div>
+    <div class="kpi-box"><div class="kpi-num">48 ปี</div><div class="kpi-label">ความเป็นมาของงาน — ก่อตั้งปี 2521</div></div>
+    <div class="kpi-box"><div class="kpi-num">211+</div><div class="kpi-label">IP ต้นฉบับไต้หวันพร้อม License บน TAICCA Platform</div></div>
+  </div>
+
+  <div class="h3">ผู้ซื้อที่จะพบในงาน</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>ประเภทผู้ซื้อ</th><th>สิ่งที่มองหา</th><th>Package ที่เหมาะ</th></tr></thead>
+      <tbody>
+        <tr><td>Brand Managers (Eslite, ห้างฯ, 7-Eleven)</td><td>IP สำหรับ collab, seasonal campaign, branded merchandise</td><td class="gold">Package 1 — IP Licensing</td></tr>
+        <tr><td>Art Toy Companies (ToyZero Plus, Unbox)</td><td>IP ที่มีฐาน fan + emotional depth</td><td class="gold">Package 3 — Art Toy JV</td></tr>
+        <tr><td>Gallery & Museum Shops</td><td>Art Print คุณภาพสูง มีเรื่องราวเบื้องหลัง</td><td class="gold">Package 2 — Art Print</td></tr>
+        <tr><td>Interior Design Firms</td><td>Art Print สำหรับ residential & hospitality projects</td><td class="gold">Package 2 — Art Print</td></tr>
+        <tr><td>Hospitality Brands (Hotel, Café)</td><td>Branded Space, amenity design, emotional IP</td><td class="gold">Package 1 — Hospitality Tier</td></tr>
+        <tr><td>Publishing Houses</td><td>IP สำหรับ sticker books, art books, calendar</td><td class="gold">Package 1 — Digital/Sticker Tier</td></tr>
+        <tr><td>Licensing Agencies</td><td>IP portfolio ที่ represent ต่อ licensee หลายราย</td><td class="gold">Package 1 + Regional Agent role</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="h3">ช่องทาง Co-branding ที่ Active ในไต้หวัน</div>
+  <div class="card-grid card-grid-3">
+    <div class="card gold-pale"><div class="card-title">🏪 Convenience Stores</div><div class="card-text">7-Eleven & FamilyMart ทำ IP collab เป็นประจำ · ปริมาณสูงมาก</div></div>
+    <div class="card gold-pale"><div class="card-title">🏨 Hospitality</div><div class="card-text">Hotel branded amenities, rooftop café collab · Grand Hyatt, W Taipei area</div></div>
+    <div class="card gold-pale"><div class="card-title">🏬 Department Stores</div><div class="card-text">SOGO, Mitsukoshi, New York New York · ตลาด Pop-up ที่ดีมาก</div></div>
+    <div class="card gold-pale"><div class="card-title">☕ F&B</div><div class="card-text">Hand-shaken tea, CAFE!N, Barista-concept café · ไต้หวัน = ชาติ café culture</div></div>
+    <div class="card gold-pale"><div class="card-title">🚅 Transport</div><div class="card-text">Taiwan High Speed Rail, Taipei Metro มี IP ประจำ · ของที่ระลึก IP-branded</div></div>
+    <div class="card gold-pale"><div class="card-title">💳 Finance & Tech</div><div class="card-text">Citibank × Ugly Rabbit, Acer × Shark Boy — benchmark IP x corporate collabs</div></div>
+  </div>
+
+  <div class="highlight" style="margin-top:20px;">
+    <strong>ข้อได้เปรียบสำคัญ:</strong> Taiwan Excellence ร่วมงาน Tum Ulit ในปี 2568 ใน 11 ประเทศ — ชื่อ Tum Ulit มี awareness ในตลาดไต้หวันแล้วก่อนงาน
+  </div>
+</section>
+
+<!-- ─── S5: Script & Q&A ─────────────────────────────────────────── -->
+<section id="s5">
+  <div class="section-label">ส่วนที่ 05</div>
+  <div class="section-title">Script & Q&A สำหรับบูธ</div>
+  <div class="section-sub">คุณมีพื้นหลัง B2B Exhibition — ส่วนนี้ช่วยให้ "ตอบถูก" เรื่อง IP และราคา</div>
+
+  <div class="h3">Script เปิดการสนทนา</div>
+  <div class="script-box">
+    <div class="script-lang">🇬🇧 ภาษาอังกฤษ</div>
+    <div class="script-text">"Hi! Welcome to Ulithouse. These are characters by Thai artist Tum Ulit — he creates wordless characters that make people feel something real. Are you looking for character IP to license, or more for distribution or collectibles?"</div>
+  </div>
+  <div class="script-box">
+    <div class="script-lang">🇹🇼 ภาษาจีน</div>
+    <div class="script-text">「歡迎來到Ulithouse。這些角色來自泰國藝術家Tum Ulit — 他創作無語言的角色，讓人真實感受情感。您是在尋找IP授權、藝術版畫代理，還是藝術玩具合作呢？」</div>
+  </div>
+
+  <div class="h3">คำถามที่ได้ยินบ่อยในบูธ</div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "แบรนด์นี้ขายอะไร?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"เราเป็น Thai Character IP Studio — มีคาแรคเตอร์ที่ไม่ต้องใช้ภาษา แต่ทำให้คนรู้สึกได้ ผู้ติดตาม 1.7 ล้านคนทั่วโลก เราเสนอ 3 อย่าง: IP Licensing, Art Print Distribution, และ Art Toy JV"<div class="zh">「我們是泰國角色IP工作室——我們的角色不需要語言，就能讓人有真實的感受。全球擁有170萬粉絲。我們提供三種合作模式：IP授權、藝術版畫代理和藝術玩具合作。」</div></div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "ราคา License เท่าไหร่?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"ขึ้นอยู่กับสินค้าและประเทศ — เริ่มต้นที่ $3,000 สำหรับแคมเปญสั้น หรือ $5,000–$15,000 สำหรับ 1 หมวดสินค้า/1 ปี ขอชื่อ + อีเมลไว้ คุณ Patr จะส่ง Rate Card ให้โดยตรงครับ"</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "ใครซื้อแบรนด์นี้ไปแล้วบ้าง?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"AVANI+ Hotels, TBWA, SC Asset, Taiwan Excellence ร่วมงานมาแล้ว — SC Asset ใช้คาแรคเตอร์ Custom สำหรับโครงการ Residential Development ทั้งโปรเจกต์ ล่าสุด Taiwan Excellence ร่วมทำ comic series ใน 11 ประเทศ"</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "Art Print ซื้อขั้นต่ำเท่าไหร่?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"Wholesale เริ่มที่ 20 ชิ้น ราคา 50% ของ Retail ($60–$93/ชิ้น) — หรือถ้าไม่แน่ใจยอดขาย เริ่มแบบ Consignment ได้เลย ไม่มีค่าใช้จ่ายล่วงหน้า ได้ 35% จาก Retail price"</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "Art Toy ทำยังไง?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"เรามี 2 แบบ: Resin Limited Edition 25–100 ชิ้น แบ่ง Net Profit 55/45 — หรือ Vinyl Open Edition 500+ ชิ้น จ่าย Royalty 8–12% ขึ้นอยู่กับว่าคุณมีโรงงานหรือเน้นตลาด Collectible"</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "IP เป็นของใคร?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"IP เป็นของ Ulithouse 100% — คุณได้รับ License ใช้งาน ไม่ใช่ความเป็นเจ้าของ ยกเว้นแพ็คเกจ Custom Full Brand System $30,000+ ที่สามารถ Transfer IP ได้ตามเงื่อนไขสัญญา"</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "Exclusive ได้ไหม?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"ได้ — Category Exclusive บวก +25% ของราคา | Territory Exclusive บวก +40% เราแนะนำ Category Exclusive สำหรับดีลแรกเพื่อปกป้อง Investment ของคุณ"</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggleQA(this)"><span>💬 "ทำงานกับ Taiwan partner มาก่อนไหม?"</span><span class="arrow">⌄</span></div>
+    <div class="qa-a">"เราเพิ่งทำงานกับ Taiwan Excellence ในปีที่แล้ว — ร่วมสร้าง comic series ที่ใช้งานใน 11 ประเทศ ดังนั้นเรารู้ว่าตลาดไต้หวันต้องการอะไร และเราพร้อมสำหรับ partnership ระยะยาว"</div>
+  </div>
+
+  <div class="alert-box" style="margin-top:20px;">
+    <strong>⚠ ต้องปรึกษา Patr ก่อนตอบ:</strong> ราคาต่ำกว่า Rate Card · Exclusivity ระดับ Territory · Custom Character นอกไต้หวัน · ดีลสูงกว่า $25,000 · ลูกค้าที่เป็นคู่แข่งพาร์ทเนอร์ปัจจุบัน
+  </div>
+
+  <div class="h3">วิธีปิดการสนทนา (ทำทุกครั้ง)</div>
+  <div class="card navy" style="padding:20px 24px;">
+    <ul style="list-style:none; color:rgba(255,255,255,0.85); font-size:13.5px; line-height:2;">
+      <li>① รับนามบัตร หรือขอชื่อ + บริษัท + อีเมล</li>
+      <li>② ถามว่า: "สนใจแบบไหนมากกว่า — IP Licensing, Art Print, หรือ Art Toy?"</li>
+      <li>③ บอก: "เราจะส่งข้อมูลละเอียดให้ทาง Email ภายใน 3 วันทำการหลังงานจบ"</li>
+      <li>④ ส่ง Lead ให้ Patr ทาง Line ทันที: ชื่อ · บริษัท · ประเภทที่สนใจ · ภาษา (EN/ZH) · ระดับ (<span style="color:var(--gold);">🔥 Hot</span> / Warm / Cold)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── S6: KPI & Checklist ──────────────────────────────────────── -->
+<section id="s6" style="background:var(--gray-light);">
+  <div class="section-label">ส่วนที่ 06</div>
+  <div class="section-title">เป้าหมาย KPI & Checklist</div>
+  <div class="section-sub">สิ่งที่ต้องเตรียมและวัดผลก่อน-ระหว่าง-หลังงาน</div>
+
+  <div class="h3">KPI ที่คาดหวัง</div>
+  <div class="kpi-grid" style="margin-bottom:28px;">
+    <div class="kpi-box"><div class="kpi-num">10</div><div class="kpi-label">พาร์ทเนอร์ใหม่ที่ได้นัด Follow-up</div></div>
+    <div class="kpi-box"><div class="kpi-num">3–5</div><div class="kpi-label">ดีล IP Licensing ที่หวัง</div></div>
+    <div class="kpi-box"><div class="kpi-num">2–3</div><div class="kpi-label">ดีล Art Print Distribution</div></div>
+    <div class="kpi-box"><div class="kpi-num">1–2</div><div class="kpi-label">ดีล Art Toy JV</div></div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="h3">✅ Checklist ก่อนงาน</div>
+      <ul class="checklist">
+        <li>ลงทะเบียน Procurement Matchmaking ผ่าน dgtaiwan.com</li>
+        <li>ยืนยัน Badge รับที่โรงแรม (ไม่ต้องรับที่งาน)</li>
+        <li>ยืนยัน Insurance ของสินค้าในบูธ</li>
+        <li>ติดต่อ KY-POST DESIGN (Ms. Angie Lin) หากต้องการไฟฟ้าเพิ่ม</li>
+        <li>เตรียม Business Card ภาษาอังกฤษและจีน</li>
+        <li>ดาวน์โหลด Floor Map จาก booth.e-taitra.com.tw</li>
+        <li>ติดตั้ง EasyCard (NT card) สำหรับ MRT ไทเป</li>
+        <li>จดชื่อ "台北世界貿易中心一館" สำหรับแท็กซี่</li>
+      </ul>
+    </div>
+    <div>
+      <div class="h3">📋 Checklist ระหว่างงาน</div>
+      <ul class="checklist">
+        <li>มีคนดูบูธตลอดเวลา ห้ามทิ้งว่าง</li>
+        <li>รับนามบัตรทุกคนที่คุยด้วย</li>
+        <li>ส่ง Lead ให้ Patr ทาง Line ทันทีหลังลูกค้าออกจากบูธ</li>
+        <li>เข้า Matchmaking Session วันที่ 17 เม.ย. ตามนัด</li>
+        <li>โหวต DG PICK Awards เพื่อให้บูธอื่นๆ รู้จักเรา</li>
+        <li>ไม่ตอบราคาต่ำกว่า Rate Card โดยไม่ปรึกษา Patr</li>
+        <li>ใช้ภาษาจีนเมื่อลูกค้าพูดจีน — เป็นข้อได้เปรียบสำคัญ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h3" style="margin-top:24px;">📞 ข้อมูลติดต่อสำคัญ</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-title">Show Manager</div><div class="card-text">Ms. Belinda Chen<br>giftionery@taitra.org.tw<br>+886-2-2725-5200 ext. 2618</div></div>
+    <div class="card"><div class="card-title">อุปกรณ์เพิ่มเติม</div><div class="card-text">Ms. Angie Lin (KY-POST DESIGN)<br>angie.lin@ky-post.com<br>ไฟฟ้าเพิ่ม / furniture rental</div></div>
+    <div class="card"><div class="card-title">Ulithouse Contact</div><div class="card-text">Email: ulithouse@gmail.com<br>Website: tumulit.com<br>Line: @ulithouse</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">ULITHOUSE</div>
+    <div class="footer-tagline">"Beyond Words, Into Hearts."</div>
+    <div style="margin-top:8px; font-size:11px; color:rgba(255,255,255,0.4);">เอกสารนี้เป็นความลับภายในองค์กร | CONFIDENTIAL · จัดทำสำหรับ DG Taiwan 2026</div>
+  </div>
+  <div class="footer-contacts">
+    <div style="color:rgba(255,255,255,0.5); font-size:11px; margin-bottom:4px;">BOOTH A0436 · INT'L IP HUB · TWTC HALL 1</div>
+    <a href="mailto:ulithouse@gmail.com">ulithouse@gmail.com</a>
+    <a href="https://tumulit.com">tumulit.com</a>
+    <a href="https://www.dgtaiwan.com">dgtaiwan.com</a>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Sidebar active tracking
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Highlight active nav item on scroll
+const sections = ['hero','s1','s2','s3','s4','s5','s6'];
+const navItems = document.querySelectorAll('.nav-item');
+
+window.addEventListener('scroll', () => {
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    const fn = item.getAttribute('onclick') || '';
+    if (fn.includes("'" + current + "'")) item.classList.add('active');
+  });
+});
+
+// Package tabs
+function showPkg(id, btn) {
+  document.querySelectorAll('.pkg-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Q&A accordion
+function toggleQA(el) {
+  const ans = el.nextElementSibling;
+  el.classList.toggle('open');
+  ans.classList.toggle('open');
+}
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.05 });
+
+document.querySelectorAll('section, .card, .tl-item, .kpi-box').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+// Hero always visible
+document.querySelector('.hero').style.opacity = '1';
+document.querySelector('.hero').style.transform = 'none';
+</script>
+</body>
+</html>
